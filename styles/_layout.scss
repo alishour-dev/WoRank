@@ -1,0 +1,30 @@
+header {
+	width: 100%;
+	height: 7rem;
+	@include centering;
+	box-shadow: $shadow-header;
+
+	.logo {
+		@include centering;
+		font-size: 2.4rem;
+		color: #15dae0;
+
+		.icon {
+			font-size: inherit;
+			margin-right: 0.4rem;
+		}
+		h1 {
+			font-size: inherit;
+
+			span {
+				color: #f585bb;
+			}
+		}
+	}
+}
+
+footer {
+	width: 100%;
+	height: 6rem;
+	@include centering;
+}
