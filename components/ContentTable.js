@@ -1,7 +1,9 @@
 import { IoIosArrowDown } from "react-icons/io"
+import Image from "next/image"
+import Link from "next/link"
 
 const ContentTable = ({ countries }) => {
-	console.log(countries)
+	// console.log(countries)
 	return (
 		<div className='table-container'>
 			<div className='table-head'>
@@ -19,18 +21,29 @@ const ContentTable = ({ countries }) => {
 				</button>
 			</div>
 			<div className='rows-container'>
-				{countries.map((country, index) => (
-					<div className='row' key={index}>
-						<div className='row-item'>
-							<h3>{country.name.common}</h3>
+				{countries.map((item, index) => (
+					<Link href={`/country/${item.name}`} key={index}>
+						<div className='row'>
+							<div className='row-item'>
+								<div className='flag'>
+									<Image
+										src={item.flags.png}
+										width={30}
+										height={20}
+										objectFit='cover'
+										alt={item.name}
+									/>
+								</div>
+								<h3>{item.name}</h3>
+							</div>
+							<div className='row-item'>
+								<p>{item.population}</p>
+							</div>
+							<div className='row-item'>
+								<p>{item.area}</p>
+							</div>
 						</div>
-						<div className='row-item'>
-							<p>{country.population}</p>
-						</div>
-						<div className='row-item'>
-							<p>{country.area}</p>
-						</div>
-					</div>
+					</Link>
 				))}
 			</div>
 		</div>

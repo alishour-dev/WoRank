@@ -10,15 +10,16 @@ $breakpoint-desktop: 1080px;
 
 .container {
 	width: 100vw;
-	height: calc(100vh - 13rem);
-	max-height: calc(100vh - 12rem);
-	padding: 0 0.5rem;
+	height: calc(100vh - 10rem);
+	max-height: calc(100vh - 10rem);
+	padding: 0 1.6rem;
 	overflow: hidden;
+	margin: 0 auto;
 
 	.searchbar-container {
 		width: 85%;
 		height: 5rem;
-		margin: 3.4rem auto;
+		margin: 1.6rem auto 3.4rem auto;
 		padding-left: 1rem;
 		@include centering;
 		background: #ffffff;
@@ -62,23 +63,27 @@ $breakpoint-desktop: 1080px;
 
 	.heading-title {
 		font-size: 1.4rem;
-		margin: 0 0 1.2rem 2rem;
+		margin-bottom: 1.4rem;
 		color: $secondary;
 	}
 
 	.table-container {
+		margin: 0 auto;
 		width: 100%;
-		min-width: 36rem;
-		height: 100%;
+		min-width: 30rem;
 		display: flex;
 		flex-direction: column;
-		padding: 0 0.8rem;
+		padding: 0.8rem;
 		user-select: none;
+		height: calc(calc(100vh - 10rem) - 13.8rem);
+		box-shadow: $shadow-header;
 
 		.table-head {
+			width: 100%;
 			display: flex;
 			align-items: center;
-			margin-bottom: 1.4rem;
+			justify-content: center;
+			margin-bottom: 1rem;
 			background: $secondary-light;
 			border-radius: 4px;
 
@@ -105,7 +110,7 @@ $breakpoint-desktop: 1080px;
 
 				h2 {
 					margin-right: 0.4rem;
-					font-size: 1.6rem;
+					font-size: 1.5rem;
 					color: inherit;
 				}
 				.icon {
@@ -116,7 +121,7 @@ $breakpoint-desktop: 1080px;
 		}
 		.rows-container {
 			overflow-y: scroll;
-			padding: 0.8rem;
+			padding: 0.4rem;
 			cursor: pointer;
 			user-select: none;
 
@@ -141,6 +146,10 @@ $breakpoint-desktop: 1080px;
 					justify-content: flex-start;
 					align-items: center;
 
+					.flag {
+						display: none;
+					}
+
 					p {
 						text-align: center;
 						font-size: 1.5rem;
@@ -155,7 +164,7 @@ $breakpoint-desktop: 1080px;
 				&:hover,
 				&:active {
 					box-shadow: $shadow-bar;
-					transform: scale(1.05);
+					transform: translateY(-4px);
 				}
 			}
 		}
@@ -164,9 +173,9 @@ $breakpoint-desktop: 1080px;
 
 @media (min-width: $breakpoint-tablet) {
 	.container {
+		padding: 0 2.4rem;
 		.searchbar-container {
 			width: 75%;
-			margin: 4rem auto;
 			padding-left: 1.2rem;
 
 			input {
@@ -180,13 +189,13 @@ $breakpoint-desktop: 1080px;
 
 		.heading-title {
 			font-size: 1.6rem;
-			margin: 0 0 1.4rem 2.4rem;
+			margin-bottom: 1.4rem;
 		}
 
 		.table-container {
-			padding: 0 2.4rem;
-
+			height: calc(calc(100vh - 10rem) - 14.5rem);
 			.table-head {
+				margin-bottom: 0.6rem;
 				.category {
 					padding: 1.6rem;
 
@@ -206,17 +215,15 @@ $breakpoint-desktop: 1080px;
 			}
 
 			.rows-container {
-				padding: 1.8rem;
+				padding: 1rem 1rem 0.4rem 0.4rem;
 
 				&::-webkit-scrollbar {
 					display: unset;
 					width: 14px;
 				}
-
 				&::-webkit-scrollbar-track {
 					box-shadow: inset 0 0 6px rgba(7, 133, 149, 0.4);
 				}
-
 				&::-webkit-scrollbar-thumb {
 					background-color: $secondary;
 					outline: 0;
@@ -227,6 +234,10 @@ $breakpoint-desktop: 1080px;
 					padding: 1.6rem;
 
 					.row-item {
+						.flag {
+							display: unset;
+							margin-right: 1rem;
+						}
 						p {
 							font-size: 1.8rem;
 						}
@@ -234,6 +245,77 @@ $breakpoint-desktop: 1080px;
 						h3 {
 							font-size: 1.8rem;
 							padding-left: 0.4rem;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (min-width: $breakpoint-desktop) {
+	.container {
+		padding: 0 2.4rem;
+		max-width: 110rem;
+		height: calc(100vh - 14rem);
+		max-height: calc(100vh - 14rem);
+		.searchbar-container {
+			width: 50%;
+			max-width: 52rem;
+			padding-left: 1.2rem;
+			margin: 0;
+			float: right;
+
+			input {
+				font-size: 1.6rem;
+			}
+
+			button {
+				margin-right: 4px;
+			}
+		}
+
+		.heading-title {
+			font-size: 2rem;
+			margin: 0;
+			margin-top: 2rem;
+		}
+
+		.table-container {
+			margin-top: 4rem;
+			height: calc(calc(100vh - 10rem) - 14rem);
+
+			.table-head {
+				margin-bottom: 1rem;
+				.category {
+					padding: 1.8rem;
+
+					&:first-child {
+						padding: 1.8rem 0 1.8rem 3rem;
+					}
+
+					h2 {
+						font-size: 2.2rem;
+					}
+					.icon {
+						font-size: 1.8rem;
+					}
+				}
+			}
+
+			.rows-container {
+				padding: 1.4rem 1.4rem 0.8rem 0.8rem;
+
+				.row {
+					padding: 1.8rem;
+
+					.row-item {
+						p {
+							font-size: 2rem;
+						}
+
+						h3 {
+							font-size: 2rem;
 						}
 					}
 				}

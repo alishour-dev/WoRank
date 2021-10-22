@@ -1,7 +1,7 @@
-import Meta from "../components/Meta"
+import Meta from "@components/Meta"
 import { useState } from "react"
-import SearchBar from "../components/SearchBar"
-import ContentTable from "../components/ContentTable"
+import SearchBar from "@components/SearchBar"
+import ContentTable from "@components/ContentTable"
 
 export default function Home({ countries }) {
 	const [input, setInput] = useState("")
@@ -22,7 +22,9 @@ export default function Home({ countries }) {
 }
 
 export async function getStaticProps() {
-	const res = await fetch("https://restcountries.com/v3.1/all")
+	const res = await fetch(
+		"https://restcountries.com/v2/all?fields=name,population,area,flags,capital,region"
+	)
 	const countries = await res.json()
 
 	if (!countries) {
