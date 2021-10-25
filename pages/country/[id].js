@@ -5,9 +5,16 @@ import { GiCapitol } from "react-icons/gi"
 import { FaPeopleArrows, FaLanguage } from "react-icons/fa"
 import { BiCurrentLocation } from "react-icons/bi"
 import { IoLanguageOutline } from "react-icons/io"
+import { FiMap } from "react-icons/fi"
 
 const country = ({ country }) => {
-	// console.log(country)
+	console.log(country)
+	const item = country.map((i) => {
+		return i.currencies
+	})
+
+	// console.log(item)
+	// console.log(Object.values(item[0]))
 
 	return (
 		<>
@@ -49,18 +56,76 @@ const country = ({ country }) => {
 							<div className='row'>
 								<div className='left'>
 									<FaLanguage className='icon' />
-									<h2>Language</h2>
+									<h2>Language(s)</h2>
 								</div>
 								{typeof [item.languages][0] === "object" && (
 									<div className='right'>
 										<p>
 											{Object.values([item.languages][0]).length > 0
-												? Object.values([item.languages][0]).toString()
+												? Object.values([item.languages][0]).join(", ")
 												: "Not Info"}
 										</p>
 									</div>
 								)}
 							</div>
+							<div className='row'>
+								<div className='left'>
+									<FcCurrencyExchange className='icon' />
+									<h2>Currency</h2>
+								</div>
+								<div className='right'>
+									{/* <p>{Object.keys([item.currencies][0]).join(", ")}</p> */}
+									<p>
+										{Object.values(item.currencies).map(
+											(i) => `${i.name} ${i.symbol ? `(${i.symbol})` : ""}`
+										)}
+									</p>
+								</div>
+							</div>
+							<div className='row'>
+								<div className='left'>
+									<FiMap className='icon' />
+									<h2>Region</h2>
+								</div>
+								<div className='right'>
+									<p>
+										{item.region && item.region},{" "}
+										{item.continents && item.continents}
+									</p>
+								</div>
+							</div>
+							<div className='row'>
+								<div className='left'>
+									<BiCurrentLocation className='icon' />
+									<h2>Live location</h2>
+								</div>
+								<div className='right'>
+									<p className='custom'>
+										<a
+											href={
+												item.maps.googleMaps
+													? item.maps.googleMaps
+													: item.maps.openStreetMaps
+											}
+											target='_blank'
+											rel='noreferrer'
+										>
+											Click here
+										</a>{" "}
+									</p>
+								</div>
+							</div>
+							{item.gini && (
+								<div className='row'>
+									<div className='left'>
+										<FcPositiveDynamic className='icon' />
+										<h2>Gini ({Object.keys(item.gini)})</h2>
+									</div>
+									<div className='right'>
+										<p>{Object.values(item.gini)}</p>
+									</div>
+								</div>
+							)}
 						</div>
 					</div>
 				))}
