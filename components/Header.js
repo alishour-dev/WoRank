@@ -3,7 +3,8 @@ import { useRouter } from "next/router"
 //icons
 import { IoArrowBackOutline } from "react-icons/io5"
 import { BiWorld } from "react-icons/bi"
-import { MdOutlineLightMode, MdOutlineNightlight } from "react-icons/md"
+import { IoIosMoon } from "react-icons/io"
+import { MdOutlineLightMode } from "react-icons/md"
 
 const Header = () => {
 	const router = useRouter()
@@ -22,7 +23,6 @@ const Header = () => {
 		setTheme(theme)
 		localStorage.setItem("theme", theme)
 		document.documentElement.setAttribute("data-theme", theme)
-		// document.documentElement.classList.add('dark')
 	}
 
 	const switchTheme = () => {
@@ -37,7 +37,7 @@ const Header = () => {
 		<header
 			style={
 				router.pathname === "/"
-					? { justifyContent: "space-evenly", padding: "0 8rem" }
+					? { justifyContent: "center", padding: "0 8rem" }
 					: { justifyContent: "space-between", padding: "0 2rem" }
 			}
 		>
@@ -54,13 +54,18 @@ const Header = () => {
 				</h1>
 			</div>
 			<button
-				className={`mode ${theme === "light" ? "light" : "dark"}`}
+				className='theme-btn'
 				onClick={switchTheme}
+				style={
+					router.pathname === "/"
+						? { position: "absolute", top: "12px", right: "20px" }
+						: null
+				}
 			>
-				{theme === "light" ? (
+				{theme === "dark" ? (
 					<MdOutlineLightMode className='icon' />
 				) : (
-					<MdOutlineNightlight className='icon' />
+					<IoIosMoon className='icon' />
 				)}
 			</button>
 		</header>

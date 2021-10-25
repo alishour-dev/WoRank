@@ -1,8 +1,18 @@
+import { AiOutlineCopyrightCircle } from "react-icons/ai"
+
 const Footer = () => {
+	var year = new Date().getFullYear()
+
 	return (
 		<footer>
-			<h1>C</h1>
-			<p>All rights reserved</p>
+			<p>
+				Copyright <AiOutlineCopyrightCircle className='icon' /> {year}
+				{"  "}
+				<a href='https://iamshour.com' target='_blank' rel='noferrer'>
+					iamshour.
+				</a>
+				All rights reserved.
+			</p>
 		</footer>
 	)
 }

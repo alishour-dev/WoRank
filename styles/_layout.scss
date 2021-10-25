@@ -8,11 +8,18 @@ header {
 		padding: 0.4rem;
 		border-radius: 4px;
 		background: #15dae0;
+		background: var(--back-btn);
 		border: 0;
 		font: inherit;
 		cursor: pointer;
 		font-size: 1.6rem;
-		color: $bg-dark;
+		color: var(--font-color);
+		transition: transform 250ms ease-in-out;
+
+		&:hover,
+		&:active {
+			transform: scale(0.96);
+		}
 
 		h2 {
 			font-size: inherit;
@@ -44,30 +51,25 @@ header {
 		}
 	}
 
-	.mode {
+	.theme-btn {
 		padding: 0.6rem;
 		border-radius: 4px;
-		border: 1px solid transparent;
+		border: 0.4px solid var(--primary);
 		font: inherit;
 		@include centering;
+		background: var(--primary-card);
+		cursor: pointer;
+		transition: all 250ms ease-in-out;
+
 		.icon {
 			font-size: 2.4rem;
+			color: var(--theme-icon);
 		}
-	}
-	.light {
-		background: #ffffff;
-		border-color: $secondary-light;
 
-		.icon {
-			color: $secondary;
-		}
-	}
-	.dark {
-		background: $secondary;
-		border-color: white;
-
-		.icon {
-			color: $primary-light;
+		&:hover,
+		&:active {
+			background: var(--primary-container);
+			transform: scale(0.98);
 		}
 	}
 }
@@ -76,16 +78,35 @@ footer {
 	width: 100%;
 	height: 4rem;
 	@include centering;
+
+	p {
+		font-size: 1.4rem;
+		color: var(--primary);
+		@include centering;
+
+		.icon {
+			font-size: 1.4rem;
+			margin: 0 0.4rem;
+		}
+
+		a {
+			font-weight: 700;
+			margin: 0 4px;
+		}
+	}
 }
 
 @media (min-width: $breakpoint-desktop) {
 	header {
 		margin-bottom: 3rem;
 		height: 7rem;
+	}
 
-		.logo {
-			@include centering;
-			font-size: 2.4rem;
+	footer {
+		justify-content: flex-start;
+		padding: 0 4rem;
+		p {
+			font-size: 1.3rem;
 		}
 	}
 }

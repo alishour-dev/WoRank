@@ -1,31 +1,36 @@
-$primary-light: #70e7eb;
-$bg-dark: #002f42;
-$secondary: #f1519e;
-$secondary-light: #f9b9d8;
-$shadow-header: 2px 2px 18px rgba(7, 133, 149, 0.2);
-$shadow-bar: 2px 4px 5px rgba(4, 154, 173, 0.2);
-$breakpoint-tablet: 768px;
-$breakpoint-desktop: 1080px;
-
 :root {
-	--primary-bg: #e2feff;
+	--app-background: #e8feff;
+	--primary: #47dadf;
+	--primary-card: #cdfdff;
+	--primary-container: #e2feff;
+	--secondary: #f1519e;
+	--secondary-light: #f9b9d8;
+	--search-bar: #fbffff;
+	--theme-icon: #0c9ca1;
+	--back-btn: #15dae0;
+	--font-color: #002f42;
+	--shadow-bar: 2px 4px 5px rgba(4, 154, 173, 0.2),
+		-1px -1px 6px rgba(4, 154, 173, 0.15);
+	--shadow-basic: 2px 2px 18px rgba(7, 133, 149, 0.2),
+		-1px -1px 4px rgba(7, 133, 149, 0.1);
 }
 
 [data-theme="dark"] {
-	--primary-bg: #002f42;
-	$primary-light: #70e7eb;
-	$bg-dark: #e2feff;
-	$secondary: #f1519e;
-	$secondary-light: #f9b9d8;
+	--app-background: #194455;
+	--app-background: #002f42;
+	--primary: #0c9ca1;
+	--primary-card: #002a3b;
+	--primary-container: #002f42;
+	--secondary: #f1519e;
+	--secondary-light: #f1519e;
+	--search-bar: #113847;
+	--theme-icon: gold;
+	--back-btn: #f1519e;
+	--font-color: #e5feff;
+	--shadow-bar: -1px -1px 6px rgba(4, 154, 173, 0.3),
+		1px 1px 5px rgba(4, 154, 173, 0.8);
+	--shadow-basic: 2px 2px 12px rgba(7, 133, 149, 0.8);
 }
-
-// [data-theme="light"] {
-// 	$primary-bg: #e2feff;
-// 	$primary-light: #70e7eb;
-// 	$bg-dark: #002f42;
-// 	$secondary: #f1519e;
-// 	$secondary-light: #f9b9d8;
-// }
 
 .container {
 	width: 100vw;
@@ -37,12 +42,12 @@ $breakpoint-desktop: 1080px;
 
 	.searchbar-container {
 		width: 85%;
-		height: 5rem;
-		margin: 1.6rem auto 3.4rem auto;
+		height: 3.6rem;
+		margin: 1.6rem auto 3rem auto;
 		padding-left: 1rem;
 		@include centering;
-		background: #ffffff;
-		box-shadow: $shadow-bar;
+		background: var(--search-bar);
+		box-shadow: var(--shadow-bar);
 		border-radius: 4px;
 
 		input {
@@ -50,7 +55,7 @@ $breakpoint-desktop: 1080px;
 			border: 0;
 			background: transparent;
 			font-size: 1.4rem;
-			color: $secondary;
+			color: var(--secondary);
 
 			&:focus,
 			&:active {
@@ -58,24 +63,27 @@ $breakpoint-desktop: 1080px;
 			}
 
 			&::placeholder {
-				color: $primary-light;
+				color: var(--primary);
+				opacity: 0.6;
 			}
 		}
 
 		button {
 			border: 0;
 			background: transparent;
-			padding: 1rem;
+			padding: 0.8rem;
+			height: 100%;
+			transition: all 250ms ease-in-out;
 
 			.icon {
-				font-size: 2.4rem;
+				font-size: 2rem;
 			}
 			.icon-clear {
-				color: $secondary;
+				color: var(--secondary);
 				cursor: pointer;
 			}
 			.icon-search {
-				color: $primary-light;
+				color: var(--primary);
 			}
 		}
 	}
@@ -83,7 +91,7 @@ $breakpoint-desktop: 1080px;
 	.heading-title {
 		font-size: 1.4rem;
 		margin-bottom: 1.4rem;
-		color: $secondary;
+		color: var(--secondary);
 	}
 
 	.table-container {
@@ -94,16 +102,18 @@ $breakpoint-desktop: 1080px;
 		flex-direction: column;
 		padding: 0.8rem;
 		user-select: none;
-		height: calc(calc(100vh - 10rem) - 13.8rem);
-		box-shadow: $shadow-header;
+		height: calc(calc(100vh - 10rem) - 12.4rem);
+		box-shadow: var(--shadow-basic);
+		background: var(--primary-container);
+		border-radius: 8px;
 
 		.table-head {
 			width: 100%;
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			margin-bottom: 1rem;
-			background: $secondary-light;
+			margin-bottom: 0.4rem;
+			background: var(--secondary-light);
 			border-radius: 4px;
 
 			.category {
@@ -112,7 +122,7 @@ $breakpoint-desktop: 1080px;
 				background: inherit;
 				font: inherit;
 				@include centering;
-				color: $bg-dark;
+				color: var(--font-color);
 				padding: 1.4rem;
 				cursor: pointer;
 				transition: color 200ms ease-in-out;
@@ -120,17 +130,20 @@ $breakpoint-desktop: 1080px;
 				&:first-child {
 					justify-content: flex-start;
 					padding: 1.4rem 1rem 1.4rem 1.8rem;
+					border-radius: 4px;
+				}
+				&:last-child {
+					border-radius: 4px;
 				}
 
 				&:hover,
 				&:active {
-					// color: $primary-bg;
-					color: var(--primary-bg);
+					color: var(--app-background);
 				}
 
 				h2 {
 					margin-right: 0.4rem;
-					font-size: 1.5rem;
+					font-size: 1.6rem;
 					color: inherit;
 				}
 				.icon {
@@ -141,7 +154,7 @@ $breakpoint-desktop: 1080px;
 		}
 		.rows-container {
 			overflow-y: scroll;
-			padding: 0.4rem;
+			padding: 0.8rem 0.4rem;
 			cursor: pointer;
 			user-select: none;
 
@@ -154,14 +167,14 @@ $breakpoint-desktop: 1080px;
 				display: flex;
 				align-items: center;
 				padding: 1.4rem;
-				margin-bottom: 1.2rem;
-				background: #cdfdff;
+				margin-bottom: 1rem;
+				background: var(--primary-card);
 				border-radius: 4px;
 				transition: box-shadow 250ms ease-in-out, transform 250ms ease-in-out;
 
 				.row-item {
 					width: 100%;
-					color: $bg-dark;
+					color: var(--font-color);
 					display: flex;
 					justify-content: flex-start;
 					align-items: center;
@@ -177,13 +190,13 @@ $breakpoint-desktop: 1080px;
 					}
 
 					h3 {
-						font-size: 1.6rem;
+						font-size: 1.5rem;
 					}
 				}
 
 				&:hover,
 				&:active {
-					box-shadow: $shadow-bar;
+					box-shadow: var(--shadow-bar);
 					transform: translateY(-4px);
 				}
 			}
@@ -195,8 +208,9 @@ $breakpoint-desktop: 1080px;
 	.container {
 		padding: 0 2.4rem;
 		.searchbar-container {
-			width: 75%;
+			width: 60%;
 			padding-left: 1.2rem;
+			margin: 2rem auto;
 
 			input {
 				font-size: 1.6rem;
@@ -206,36 +220,33 @@ $breakpoint-desktop: 1080px;
 				margin-right: 4px;
 			}
 		}
-
 		.heading-title {
-			font-size: 1.6rem;
 			margin-bottom: 1.4rem;
 		}
 
 		.table-container {
-			height: calc(calc(100vh - 10rem) - 14.5rem);
+			height: calc(calc(100vh - 10rem) - 11.8rem);
 			.table-head {
-				margin-bottom: 0.6rem;
 				.category {
-					padding: 1.6rem;
+					padding: 1.4rem;
 
 					&:first-child {
 						justify-content: flex-start;
-						padding: 1.6rem 0 1.6rem 2.4rem;
+						padding: 1.4rem 0 1.4rem 2.2rem;
 					}
 
 					h2 {
-						margin-right: 0.6rem;
-						font-size: 1.8rem;
+						margin-right: 0.5rem;
+						font-size: 1.7rem;
 					}
 					.icon {
-						font-size: 1.6rem;
+						font-size: 1.5rem;
 					}
 				}
 			}
 
 			.rows-container {
-				padding: 1rem 1rem 0.4rem 0.4rem;
+				padding: 1.2rem 1rem 0.4rem 0.4rem;
 
 				&::-webkit-scrollbar {
 					display: unset;
@@ -245,13 +256,13 @@ $breakpoint-desktop: 1080px;
 					box-shadow: inset 0 0 6px rgba(7, 133, 149, 0.4);
 				}
 				&::-webkit-scrollbar-thumb {
-					background-color: $secondary;
+					background-color: var(--secondary);
 					outline: 0;
 					border-radius: 4px;
 				}
 
 				.row {
-					padding: 1.6rem;
+					padding: 1.4rem;
 
 					.row-item {
 						.flag {
@@ -259,11 +270,11 @@ $breakpoint-desktop: 1080px;
 							margin-right: 1rem;
 						}
 						p {
-							font-size: 1.8rem;
+							font-size: 1.6rem;
 						}
 
 						h3 {
-							font-size: 1.8rem;
+							font-size: 1.6rem;
 							padding-left: 0.4rem;
 						}
 					}
@@ -275,13 +286,15 @@ $breakpoint-desktop: 1080px;
 
 @media (min-width: $breakpoint-desktop) {
 	.container {
-		padding: 0 2.4rem;
+		padding: 0 4rem;
 		max-width: 110rem;
 		height: calc(100vh - 14rem);
 		max-height: calc(100vh - 14rem);
+		overflow: visible;
 		.searchbar-container {
-			width: 50%;
-			max-width: 52rem;
+			width: 40%;
+			max-width: 50rem;
+			height: 4.2rem;
 			padding-left: 1.2rem;
 			margin: 0;
 			float: right;
@@ -296,50 +309,14 @@ $breakpoint-desktop: 1080px;
 		}
 
 		.heading-title {
-			font-size: 2rem;
+			font-size: 1.6rem;
 			margin: 0;
-			margin-top: 2rem;
+			padding-top: 2rem;
 		}
 
 		.table-container {
-			margin-top: 4rem;
-			height: calc(calc(100vh - 10rem) - 14rem);
-
-			.table-head {
-				margin-bottom: 1rem;
-				.category {
-					padding: 1.8rem;
-
-					&:first-child {
-						padding: 1.8rem 0 1.8rem 3rem;
-					}
-
-					h2 {
-						font-size: 2.2rem;
-					}
-					.icon {
-						font-size: 1.8rem;
-					}
-				}
-			}
-
-			.rows-container {
-				padding: 1.4rem 1.4rem 0.8rem 0.8rem;
-
-				.row {
-					padding: 1.8rem;
-
-					.row-item {
-						p {
-							font-size: 2rem;
-						}
-
-						h3 {
-							font-size: 2rem;
-						}
-					}
-				}
-			}
+			margin-top: 3.2rem;
+			height: calc(calc(100vh - 14rem) - 8.6rem);
 		}
 	}
 }

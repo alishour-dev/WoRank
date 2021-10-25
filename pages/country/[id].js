@@ -4,7 +4,7 @@ import { FcCurrencyExchange, FcPositiveDynamic } from "react-icons/fc"
 import { GiCapitol } from "react-icons/gi"
 import { FaPeopleArrows, FaLanguage } from "react-icons/fa"
 import { BiCurrentLocation } from "react-icons/bi"
-import { IoLanguageOutline } from "react-icons/io"
+import { IoLanguageOutline } from "react-icons/io5"
 import { FiMap } from "react-icons/fi"
 
 const country = ({ country }) => {
@@ -28,11 +28,11 @@ const country = ({ country }) => {
 							<h1>{item.name.common}</h1>
 							<div className='row'>
 								<div className='left'>
-									<h2>Population</h2>
+									<h3>Population</h3>
 									<p>{item.population}</p>
 								</div>
 								<div className='right'>
-									<h2>Area</h2>
+									<h3>Area</h3>
 									<p>{item.area}</p>
 								</div>
 							</div>
@@ -119,6 +119,52 @@ const country = ({ country }) => {
 									</div>
 								</div>
 							)}
+						</div>
+						<div className='bottom-container'>
+							<div className='title'>
+								<IoLanguageOutline className='icon' />
+								<h2>Translations</h2>
+							</div>
+							<div className='row'>
+								<div className='left'>
+									<h3>Arabic</h3>
+								</div>
+								<div className='right'>
+									<p>{item.translations.ara.official}</p>
+								</div>
+							</div>
+							<div className='row'>
+								<div className='left'>
+									<h3>French</h3>
+								</div>
+								<div className='right'>
+									<p>{item.translations.fra.official}</p>
+								</div>
+							</div>
+							<div className='row'>
+								<div className='left'>
+									<h3>Spanish</h3>
+								</div>
+								<div className='right'>
+									<p>{item.translations.spa.official}</p>
+								</div>
+							</div>
+							<div className='row'>
+								<div className='left'>
+									<h3>Italian</h3>
+								</div>
+								<div className='right'>
+									<p>{item.translations.ita.official}</p>
+								</div>
+							</div>
+							<div className='row'>
+								<div className='left'>
+									<h3>Japanese</h3>
+								</div>
+								<div className='right'>
+									<p>{item.translations.jpn.official}</p>
+								</div>
+							</div>
 						</div>
 					</div>
 				))}

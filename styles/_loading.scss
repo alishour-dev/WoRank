@@ -6,8 +6,7 @@
 	left: 0;
 	@include centering;
 	z-index: 999;
-	// background: $primary-bg;
-	background: var(--primary-bg);
+	background: var(--app-background);
 	transition: background 200ms ease-in-out;
 
 	.ripple-container {
