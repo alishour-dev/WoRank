@@ -9,12 +9,6 @@ import { FiMap } from "react-icons/fi"
 
 const country = ({ country }) => {
 	console.log(country)
-	const item = country.map((i) => {
-		return i.currencies
-	})
-
-	// console.log(item)
-	// console.log(Object.values(item[0]))
 
 	return (
 		<>
@@ -74,7 +68,6 @@ const country = ({ country }) => {
 									<h2>Currency</h2>
 								</div>
 								<div className='right'>
-									{/* <p>{Object.keys([item.currencies][0]).join(", ")}</p> */}
 									<p>
 										{Object.values(item.currencies).map(
 											(i) => `${i.name} ${i.symbol ? `(${i.symbol})` : ""}`

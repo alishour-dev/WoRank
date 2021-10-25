@@ -1,7 +1,7 @@
 import { useRef, useEffect, useState } from "react"
 import { MdClear, MdSearch } from "react-icons/md"
 
-const SearchBar = ({ input, setInput }) => {
+const SearchBar = ({ input, setInput, handleChange }) => {
 	const [clicked, setClicked] = useState(false)
 	const inputRef = useRef(null)
 
@@ -23,15 +23,8 @@ const SearchBar = ({ input, setInput }) => {
 			<input
 				type='text'
 				value={clicked ? input : ""}
-				onChange={(e) => {
-					if (clicked) {
-						setInput("")
-						setInput(e.target.value)
-					} else {
-						setInput("")
-					}
-				}}
-				placeholder='Search by name, location, language, etc..'
+				onChange={handleChange}
+				placeholder='Search for country by name, capital or region'
 				onClick={() => {
 					setClicked(true)
 				}}

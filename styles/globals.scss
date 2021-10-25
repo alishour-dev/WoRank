@@ -45,7 +45,8 @@ Link {
 }
 
 body {
-	background: $primary-bg;
+	// background: $primary-bg;
+	background: var(--primary-bg);
 	height: 100%;
 	width: 100vw;
 	user-select: none;

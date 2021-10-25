@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useRouter } from "next/router"
 //icons
 import { IoArrowBackOutline } from "react-icons/io5"
@@ -7,7 +7,31 @@ import { MdOutlineLightMode, MdOutlineNightlight } from "react-icons/md"
 
 const Header = () => {
 	const router = useRouter()
-	const [mode, setMode] = useState("light")
+	const [theme, setTheme] = useState("light")
+
+	useEffect(() => {
+		document.documentElement.setAttribute(
+			"data-theme",
+			localStorage.getItem("theme")
+		)
+
+		setTheme(localStorage.getItem("theme"))
+	}, [])
+
+	const saveTheme = (theme) => {
+		setTheme(theme)
+		localStorage.setItem("theme", theme)
+		document.documentElement.setAttribute("data-theme", theme)
+		// document.documentElement.classList.add('dark')
+	}
+
+	const switchTheme = () => {
+		if (theme === "light") {
+			saveTheme("dark")
+		} else {
+			saveTheme("light")
+		}
+	}
 
 	return (
 		<header
@@ -29,8 +53,11 @@ const Header = () => {
 					Wo<span>Rank</span>
 				</h1>
 			</div>
-			<button className={`mode ${mode === "light" ? "light" : "dark"}`}>
-				{mode === "light" ? (
+			<button
+				className={`mode ${theme === "light" ? "light" : "dark"}`}
+				onClick={switchTheme}
+			>
+				{theme === "light" ? (
 					<MdOutlineLightMode className='icon' />
 				) : (
 					<MdOutlineNightlight className='icon' />
