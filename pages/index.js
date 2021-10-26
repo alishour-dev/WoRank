@@ -21,7 +21,7 @@ export default function Home({ countries }) {
 	return (
 		<>
 			<Meta
-				title='WoRank App'
+				title='Worank App'
 				description='A modern web app made with Next.js & Sass which ranks countries around the world through different criteria, such as by population, Area square, by location (continent, or area), etc... Data is fetched through an external API, and displayed using latest Next.js functions.'
 			/>
 			<div className='container'>

@@ -59,7 +59,7 @@ const ContentTable = ({ countries }) => {
 			</div>
 			<div className='rows-container'>
 				{orderedCountries.map((item, index) => (
-					<Link href={`/country/${item.name}`} key={index}>
+					<Link href={`/country/${item.name}`} key={index} passHref>
 						<div className='row'>
 							<div className='row-item'>
 								<div className='flag'>

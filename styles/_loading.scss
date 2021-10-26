@@ -32,6 +32,7 @@
 				border-radius: 50%;
 				animation: ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
 				box-sizing: content-box;
+				overflow: visible;
 
 				&:nth-child(1) {
 					border-color: #e90c59;

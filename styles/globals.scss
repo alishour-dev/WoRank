@@ -52,6 +52,8 @@ body {
 	width: 100vw;
 	user-select: none;
 	overflow-x: hidden;
+	max-width: 120rem;
+	margin: 0 auto;
 
 	P {
 		font-weight: 400;
@@ -78,4 +80,10 @@ button,
 select,
 a {
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+@media (min-width: 1800px) {
+	html {
+		font-size: 14px;
+	}
 }

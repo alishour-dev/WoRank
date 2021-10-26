@@ -287,10 +287,11 @@
 @media (min-width: $breakpoint-desktop) {
 	.container {
 		padding: 0 4rem;
-		max-width: 110rem;
 		height: calc(100vh - 14rem);
 		max-height: calc(100vh - 14rem);
 		overflow: visible;
+		width: 100%;
+		margin: 0 auto;
 		.searchbar-container {
 			width: 40%;
 			max-width: 50rem;
