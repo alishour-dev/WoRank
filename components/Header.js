@@ -11,13 +11,14 @@ const Header = () => {
 	const [theme, setTheme] = useState("light")
 
 	useEffect(() => {
-		document.documentElement.setAttribute(
-			"data-theme",
+		setTheme(
 			localStorage.getItem("theme")
+				? localStorage.getItem("theme")
+				: localStorage?.setItem("theme", theme)
 		)
 
-		setTheme(localStorage.getItem("theme"))
-	}, [])
+		document.documentElement.setAttribute("data-theme", localStorage.getItem("theme"))
+	}, [theme])
 
 	const saveTheme = (theme) => {
 		setTheme(theme)
@@ -28,8 +29,12 @@ const Header = () => {
 	const switchTheme = () => {
 		if (theme === "light") {
 			saveTheme("dark")
+			document.querySelector("body").style.transition =
+				"background 250ms ease-in-out, color 250ms ease-in-out"
 		} else {
 			saveTheme("light")
+			document.querySelector("body").style.transition =
+				"background 250ms ease-in-out, color 250ms ease-in-out"
 		}
 	}
 
@@ -39,8 +44,7 @@ const Header = () => {
 				router.pathname === "/"
 					? { justifyContent: "center", padding: "0 8rem" }
 					: { justifyContent: "space-between", padding: "0 2rem" }
-			}
-		>
+			}>
 			{router.pathname !== "/" ? (
 				<button onClick={() => router.back()} className='back-btn'>
 					<IoArrowBackOutline className='icon' />
@@ -60,8 +64,7 @@ const Header = () => {
 					router.pathname === "/"
 						? { position: "absolute", top: "12px", right: "20px" }
 						: null
-				}
-			>
+				}>
 				{theme === "dark" ? (
 					<MdOutlineLightMode className='icon' />
 				) : (

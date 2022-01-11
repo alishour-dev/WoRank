@@ -22,7 +22,7 @@ export default function Home({ countries }) {
 		<>
 			<Meta
 				title='Worank App'
-				description='A modern web app made with Next.js & Sass which ranks countries around the world through different criteria, such as by population, Area square, by location (continent, or area), etc... Data is fetched through an external API, and displayed using latest Next.js functions.'
+				description='A modern web app made with Next.js &amp; Sass which ranks countries around the world through different criteria, such as by population, Area square, by location (continent, or area), etc... Data is fetched through an external API, and displayed using latest Next.js functions.'
 			/>
 			<div className='container'>
 				<SearchBar
